@@ -12,29 +12,29 @@ public class UserService : IUserService
         _userRepository = userRepository;
     }
 
-    public IEnumerable<User> GetAllUsers()
+    public async Task<IEnumerable<User>> GetAllUsers()
     {
-        return _userRepository.GetAllUsers();
+        return await _userRepository.GetAllAsync();
     }
 
-    public User GetUserById(int id)
+    public async Task<User> GetUserById(int id)
     {
-        return _userRepository.GetUserById(id);
+        return await _userRepository.GetByIdAsync(id);
     }
 
-    public int CreateUser(User user)
+    public async Task<int> CreateUser(User user)
     {
-        return _userRepository.InsertUser(user);
+        return await _userRepository.CreateAsync(user);
     }
 
-    public void CreateTwoUsers(User user1, User user2)
+    public async Task CreateTwoUsers(User user1, User user2)
     {
         try
         {
-            _userRepository.BeginTransation();
+            _userRepository.BeginTransaction();
 
-            _userRepository.InsertUser(user1);
-            _userRepository.InsertUser(user2);
+            await _userRepository.CreateAsync(user1);
+            await _userRepository.CreateAsync(user2);
             
             _userRepository.Commit();
         }

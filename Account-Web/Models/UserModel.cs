@@ -1,14 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Account_Web.Models;
 
-public class User
+[Table("Users")]
+public class User : BaseModel
 {
-    public int Id { get; set; }
-    public string UserId { get; set; }
-    public string UserName { get; set; }
-    public string Password { get; set; }
-    public int FactoryId { get; set; }
-    public string Email { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
-    
+    public required string UserId { get; set; }
+    public required string UserName { get; set; }
+    public required string Password { get; set; }
+    public int? FactoryId { get; set; }
+    public required string Email { get; set; }
 }
