@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Account_Web.Models;
 
+// ¨Ï¥ÎªÌ
 [Table("Users")]
 public class User : BaseModel
 {

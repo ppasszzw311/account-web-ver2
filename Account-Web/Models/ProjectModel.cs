@@ -2,6 +2,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Account_Web.Models;
 
+/// <summary>
+/// ±M®×
+/// </summary>
 [Table("Projects")]
 public class Project : BaseModel
 {

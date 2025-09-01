@@ -17,7 +17,7 @@ public class FactoryService : IFactoryService
         return await _repo.GetAllAsync();
     }
 
-    public async Task<Factory> GetFactoryById(int id)
+    public async Task<Factory?> GetFactoryById(int id)
     {
         return await _repo.GetByIdAsync(id);
     }
@@ -25,6 +25,16 @@ public class FactoryService : IFactoryService
     public async Task<int> CreateFactory(Factory user)
     {
         return await _repo.CreateAsync(user);
+    }
+
+    public async Task<bool> UpdateFactory(Factory factory)
+    {
+        return await _repo.UpdateAsync(factory);
+    }
+
+    public async Task<bool> DeleteFactory(int id)
+    {
+        return await _repo.DeleteAsync(id);
     }
 
     public async Task CreateMockFactory(List<Factory> factories)

@@ -66,8 +66,8 @@ public abstract class BaseRepository<T> : IDisposable, IBaseRepository<T> where 
     protected Task<IEnumerable<T>> QueryAsync(string sql, object param = null)
         => _connection.QueryAsync<T>(sql, param, transaction: _transaction);
     // 查詢單筆（找不到回default）
-    protected Task<T> QueryFirstOrDefaultAsync(string sql, object param = null)
-        => _connection.QueryFirstOrDefaultAsync<T>(sql, param, transaction: _transaction);
+    protected Task<T?> QueryFirstOrDefaultAsync(string sql, object param = null)
+        => _connection.QueryFirstOrDefaultAsync<T?>(sql, param, transaction: _transaction);
     
     // 執行insert/update/delete 回傳影響數
     protected Task<int> ExecuteAsync(string sql, object param = null)
